@@ -105,8 +105,8 @@ def WriteHistogramSeries(writer, tag, mu_sigma_tuples, n=20):
     summary = tf.Summary(value=[tf.Summary.Value(tag=tag, histo=histo)])
     event = tf.Event(wall_time=wall_time, step=step, summary=summary)
     writer.add_event(event)
-    step += 10
-    wall_time += 100
+    step += 5
+    wall_time += 50
 
 
 def WriteImageSeries(writer, tag, n_images=1):
@@ -133,7 +133,7 @@ def WriteAudioSeries(writer, tag, n_audio=1):
   sample_rate = 4000
   duration_frames = sample_rate // 2  # 0.5 seconds.
   frequencies_per_run = 1
-  num_channels = 2
+  num_channels = 4
 
   p = tf.compat.v1.placeholder("float32", (frequencies_per_run, duration_frames,
                                  num_channels))
